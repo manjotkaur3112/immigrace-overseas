@@ -1,0 +1,2310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Photo gallery of student guidance, destinations and campus moments | Immigrace Overseas"
+    />
+    <title>Our memories | Immigrace Overseas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #153f40;
+        --blue: #087f78;
+        --sky: #fff0e8;
+        --gold: #ff633b;
+        --ink: #18383a;
+        --muted: #667b7b;
+        --paper: #fff8f4;
+        --white: #fff;
+        --line: #f0ddd3;
+        --radius: 22px;
+        --shadow: 0 22px 65px rgba(255, 99, 59, 0.17);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+      body {
+        margin: 0;
+        font-family: "DM Sans", sans-serif;
+        color: var(--ink);
+        background: #fff;
+        line-height: 1.6;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: Manrope, sans-serif;
+        line-height: 1.15;
+        margin: 0 0 16px;
+      }
+      h1 {
+        font-size: clamp(2.8rem, 6vw, 5.3rem);
+        letter-spacing: -0.055em;
+      }
+      h2 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        letter-spacing: -0.04em;
+      }
+      h3 {
+        font-size: 1.25rem;
+      }
+      p {
+        color: var(--muted);
+        margin: 0 0 16px;
+      }
+      .container {
+        width: min(1160px, calc(100% - 40px));
+        margin: auto;
+      }
+      .topbar {
+        background: var(--navy);
+        color: #dce7f7;
+        font-size: 0.82rem;
+        padding: 8px 0;
+      }
+      .topbar .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .topbar a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .navbar {
+        height: 82px;
+        display: flex;
+        align-items: center;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(229, 234, 241, 0.85);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        text-decoration: none;
+        color: var(--navy);
+        font-family: Manrope, sans-serif;
+        font-weight: 800;
+        font-size: 1.15rem;
+        white-space: nowrap;
+      }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(135deg, #ff633b, #ff874f);
+        color: #fff;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-size: 1.35rem;
+        box-shadow: 0 7px 18px #087f7833;
+      }
+      .brand-logo {
+        width: 62px;
+        height: 42px;
+        object-fit: contain;
+        display: block;
+        flex-shrink: 0;
+      }
+      .brand small {
+        display: block;
+        color: var(--muted);
+        font: 500 0.65rem "DM Sans";
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+      .nav-links a {
+        font-size: 0.92rem;
+        text-decoration: none;
+        color: #42536a;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--blue);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 22px;
+        background: linear-gradient(135deg, #ff633b, #ff874f);
+        color: #fff;
+        text-decoration: none;
+        font: 700 0.93rem "DM Sans";
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          background 0.2s;
+        box-shadow: 0 9px 22px #087f782b;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 28px #087f7838;
+        background: #1948bf;
+      }
+      .btn.light {
+        background: #fff;
+        color: var(--navy);
+        box-shadow: none;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--blue);
+        border: 1px solid #b8dcd5;
+        box-shadow: none;
+      }
+      .menu-btn {
+        display: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 12px;
+        padding: 9px 12px;
+        font-size: 1.3rem;
+      }
+      @keyframes welcomeRise {
+        0% {
+          opacity: 0;
+          transform: translateY(-34px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-welcome {
+        animation: welcomeRise 0.95s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+      }
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 80px 0 72px;
+        background:
+          radial-gradient(circle at 88% 15%, #e6eeff 0, transparent 32%),
+          linear-gradient(125deg, #f7faff 0%, #fff 58%, #f4f8ff 100%);
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border: 1px solid #cce9e3;
+        border-radius: 50%;
+        right: -170px;
+        bottom: -180px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        align-items: center;
+        gap: 45px;
+        position: relative;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #e4f6f2;
+        color: var(--blue);
+        border-radius: 999px;
+        padding: 8px 13px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 22px;
+      }
+      .eyebrow i {
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        border-radius: 50%;
+      }
+      .hero h1 span {
+        color: var(--blue);
+        position: relative;
+      }
+      .hero-copy {
+        font-size: 1.08rem;
+        max-width: 560px;
+        margin: 20px 0 28px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 13px;
+        flex-wrap: wrap;
+      }
+      .trust-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 32px;
+      }
+      .avatars {
+        display: flex;
+        padding-left: 4px;
+      }
+      .avatars span {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        margin-left: -5px;
+        background: linear-gradient(135deg, #f7c58b, #d47d64);
+        display: grid;
+        place-items: center;
+        font-size: 0.8rem;
+      }
+      .avatars span:nth-child(2) {
+        background: linear-gradient(135deg, #a6d7d5, #428c99);
+      }
+      .avatars span:nth-child(3) {
+        background: linear-gradient(135deg, #e7c1ed, #9d79c7);
+      }
+      .trust-row strong {
+        display: block;
+        font-size: 0.9rem;
+      }
+      .trust-row small {
+        color: var(--muted);
+      }
+      .hero-visual {
+        min-height: 480px;
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+      .hero-photo {
+        width: 100%;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 32px 32px 110px 32px;
+        box-shadow: var(--shadow);
+        filter: saturate(0.9);
+      }
+      .photo-overlay {
+        position: absolute;
+        inset: 0;
+        border-radius: 32px 32px 110px 32px;
+        background: linear-gradient(
+          0deg,
+          rgba(16, 42, 67, 0.32),
+          transparent 55%
+        );
+        pointer-events: none;
+      }
+      .floating-card {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #ffffffa8;
+        border-radius: 18px;
+        padding: 16px 19px;
+        box-shadow: var(--shadow);
+        animation: float 5s ease-in-out infinite;
+      }
+      .floating-card strong {
+        display: block;
+        color: var(--navy);
+        font-size: 1.08rem;
+      }
+      .floating-card small {
+        color: var(--muted);
+      }
+      .fc-one {
+        left: -28px;
+        bottom: 42px;
+      }
+      .fc-two {
+        right: -18px;
+        top: 35px;
+        animation-delay: -2s;
+      }
+      .mini-icon {
+        display: inline-grid;
+        place-items: center;
+        width: 35px;
+        height: 35px;
+        background: #e4f6f2;
+        border-radius: 11px;
+        margin-right: 8px;
+      }
+      .hero-note {
+        position: absolute;
+        bottom: 25px;
+        right: 22px;
+        color: #fff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-shadow: 0 2px 8px #0008;
+      }
+      .stats {
+        padding: 27px 0;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      .stat {
+        text-align: center;
+        border-right: 1px solid var(--line);
+      }
+      .stat:last-child {
+        border: 0;
+      }
+      .stat strong {
+        font: 800 1.8rem Manrope;
+        color: var(--navy);
+        display: block;
+      }
+      .stat span {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      section {
+        padding: 92px 0;
+      }
+      .section-head {
+        text-align: center;
+        max-width: 690px;
+        margin: 0 auto 42px;
+      }
+      .section-head p {
+        max-width: 580px;
+        margin: 0 auto;
+      }
+      .section-tag {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-weight: 800;
+        color: var(--blue);
+        display: block;
+        margin-bottom: 12px;
+      }
+      .countries {
+        background: var(--paper);
+      }
+      .country-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .country-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .country-card:hover {
+        transform: translateY(-7px);
+        box-shadow: var(--shadow);
+      }
+      .country-image {
+        height: 155px;
+        position: relative;
+        overflow: hidden;
+      }
+      .country-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .country-card:hover .country-image img {
+        transform: scale(1.06);
+      }
+      .flag {
+        position: absolute;
+        bottom: 12px;
+        left: 14px;
+        background: #fff;
+        border-radius: 12px;
+        padding: 6px 10px;
+        font-size: 1.3rem;
+        box-shadow: 0 5px 16px #0001;
+      }
+      .country-content {
+        padding: 20px;
+      }
+      .country-content p {
+        font-size: 0.9rem;
+        min-height: 46px;
+      }
+      .text-link {
+        color: var(--blue);
+        font-weight: 800;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .service-card {
+        padding: 27px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        transition: all 0.25s;
+      }
+      .service-card:hover {
+        border-color: #b8e2da;
+        box-shadow: var(--shadow);
+        transform: translateY(-5px);
+      }
+      .service-icon {
+        height: 50px;
+        width: 50px;
+        border-radius: 15px;
+        background: var(--sky);
+        display: grid;
+        place-items: center;
+        font-size: 1.4rem;
+        margin-bottom: 22px;
+      }
+      .service-card p {
+        font-size: 0.93rem;
+      }
+      .service-card a {
+        display: inline-block;
+        margin-top: 7px;
+      }
+      .process {
+        background: var(--navy);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .process:after {
+        content: "";
+        position: absolute;
+        width: 420px;
+        height: 420px;
+        border: 1px solid #ffffff18;
+        border-radius: 50%;
+        right: -120px;
+        top: -170px;
+      }
+      .process .section-tag {
+        color: #ffb39f;
+      }
+      .process .section-head p {
+        color: #c2d0e1;
+      }
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        position: relative;
+        z-index: 1;
+      }
+      .step {
+        padding: 22px 18px;
+        border-top: 1px solid #ffffff40;
+        position: relative;
+      }
+      .step-num {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #1c6864;
+        color: #fff;
+        font-weight: 800;
+        margin-bottom: 22px;
+        border: 1px solid #70aaa3;
+      }
+      .step p {
+        color: #c2d0e1;
+        font-size: 0.9rem;
+      }
+      .step h3 {
+        color: #fff;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .why-image {
+        width: 100%;
+        height: 440px;
+        object-fit: cover;
+        border-radius: 28px;
+      }
+      .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 25px 0;
+      }
+      .check-list li {
+        display: flex;
+        gap: 12px;
+        margin: 15px 0;
+        color: #42536a;
+      }
+      .check {
+        width: 24px;
+        height: 24px;
+        flex: 0 0 24px;
+        background: #e4f8ee;
+        color: #11804a;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+      }
+      .testimonial {
+        background: #f6f8fc;
+      }
+      .quote-card {
+        max-width: 780px;
+        margin: auto;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 36px;
+        text-align: center;
+        box-shadow: 0 12px 35px #102a4308;
+      }
+      .stars {
+        color: #ff633b;
+        letter-spacing: 3px;
+        font-size: 1.15rem;
+        margin-bottom: 16px;
+      }
+      .quote-card blockquote {
+        font: 600 clamp(1.15rem, 2vw, 1.5rem) Manrope;
+        line-height: 1.55;
+        margin: 0 auto 24px;
+        max-width: 650px;
+      }
+      .person {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+      .person-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #e5edff;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: var(--blue);
+      }
+      .person strong {
+        display: block;
+      }
+      .person small {
+        color: var(--muted);
+      }
+      .contact {
+        background: linear-gradient(120deg, #f7faff, #fff);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 55px;
+        align-items: start;
+      }
+      .contact-info {
+        padding-top: 10px;
+      }
+      .contact-item {
+        display: flex;
+        gap: 14px;
+        margin: 25px 0;
+        align-items: flex-start;
+      }
+      .contact-item .service-icon {
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .contact-item strong {
+        display: block;
+      }
+      .contact-item p {
+        margin: 3px 0;
+        font-size: 0.92rem;
+      }
+      .contact-form {
+        background: #fff;
+        padding: 32px;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        box-shadow: var(--shadow);
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 7px;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid #dce3ed;
+        background: #fbfcfe;
+        border-radius: 12px;
+        padding: 13px 14px;
+        font: inherit;
+        color: var(--ink);
+        outline: none;
+        transition:
+          border 0.2s,
+          box-shadow 0.2s;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px #087f781a;
+      }
+      .field textarea {
+        min-height: 115px;
+        resize: vertical;
+      }
+      .form-note {
+        font-size: 0.78rem;
+        margin: 12px 0 0;
+      }
+      .form-status {
+        display: none;
+        padding: 12px;
+        border-radius: 12px;
+        background: #e7f8ef;
+        color: #116b3c;
+        font-size: 0.9rem;
+        margin-top: 15px;
+      }
+      .form-status.show {
+        display: block;
+      }
+      .cta-band {
+        padding: 0 0 88px;
+      }
+      .cta-inner {
+        background: linear-gradient(135deg, #ff633b, #ff874f);
+        color: #fff;
+        border-radius: 28px;
+        padding: 42px 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+        overflow: hidden;
+        position: relative;
+      }
+      .cta-inner:after {
+        content: "";
+        position: absolute;
+        width: 260px;
+        height: 260px;
+        border: 1px solid #ffffff35;
+        border-radius: 50%;
+        right: 180px;
+        top: -150px;
+      }
+      .cta-inner h2 {
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        max-width: 650px;
+        margin-bottom: 8px;
+      }
+      .cta-inner p {
+        color: #e0e9ff;
+        margin: 0;
+      }
+      .cta-inner > * {
+        position: relative;
+        z-index: 1;
+      }
+      footer {
+        background: #0b2035;
+        color: #d7e2ef;
+        padding: 55px 0 22px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 35px;
+        padding-bottom: 35px;
+      }
+      .footer-brand {
+        color: #fff;
+      }
+      .footer-grid p {
+        color: #a9bbce;
+        font-size: 0.9rem;
+        max-width: 300px;
+        margin-top: 18px;
+      }
+      .footer-grid h4 {
+        color: #fff;
+        font-size: 1rem;
+        margin-bottom: 16px;
+      }
+      .footer-grid a {
+        display: block;
+        color: #a9bbce;
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin: 9px 0;
+      }
+      .footer-grid a:hover {
+        color: #fff;
+      }
+      .copyright {
+        border-top: 1px solid #ffffff20;
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        flex-wrap: wrap;
+        color: #9fb0c2;
+        font-size: 0.8rem;
+      }
+      .whatsapp {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 25;
+        background: #20b968;
+        color: #fff;
+        text-decoration: none;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 1.65rem;
+        box-shadow: 0 10px 25px #20b96855;
+        transition: transform 0.2s;
+      }
+      .whatsapp:hover {
+        transform: scale(1.08);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          scroll-behavior: auto !important;
+          animation: none !important;
+          transition: none !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @media (max-width: 950px) {
+        .nav-links {
+          gap: 14px;
+        }
+        .nav-links a {
+          font-size: 0.85rem;
+        }
+        .nav-cta {
+          display: none;
+        }
+        .hero-grid {
+          gap: 25px;
+        }
+        .hero-visual {
+          min-height: 400px;
+        }
+        .hero-photo {
+          height: 390px;
+        }
+        .country-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .process-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .why-grid {
+          gap: 35px;
+        }
+      }
+      @media (max-width: 720px) {
+        .container {
+          width: min(100% - 30px, 560px);
+        }
+        .topbar .container {
+          justify-content: center;
+          text-align: center;
+        }
+        .navbar {
+          height: 70px;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 69px;
+          left: 0;
+          right: 0;
+          background: #fff;
+          padding: 20px 25px 25px;
+          box-shadow: 0 18px 25px #102a4312;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          border-top: 1px solid var(--line);
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 12px 0;
+          border-bottom: 1px solid var(--line);
+          font-size: 1rem;
+        }
+        .nav-links a:last-child {
+          border: 0;
+        }
+        .hero {
+          padding: 50px 0 42px;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: clamp(2.7rem, 12vw, 4.2rem);
+        }
+        .hero-copy {
+          font-size: 1rem;
+        }
+        .hero-visual {
+          min-height: 350px;
+          margin: 12px 0 0 12px;
+        }
+        .hero-photo {
+          height: 350px;
+          border-radius: 25px 25px 75px 25px;
+        }
+        .photo-overlay {
+          border-radius: 25px 25px 75px 25px;
+        }
+        .fc-one {
+          left: -12px;
+          bottom: 22px;
+        }
+        .fc-two {
+          right: -8px;
+          top: 20px;
+        }
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          row-gap: 22px;
+        }
+        .stat:nth-child(2) {
+          border: 0;
+        }
+        .stat strong {
+          font-size: 1.55rem;
+        }
+        section {
+          padding: 65px 0;
+        }
+        .section-head {
+          margin-bottom: 30px;
+        }
+        .country-grid,
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        .country-image {
+          height: 190px;
+        }
+        .country-content p {
+          min-height: 0;
+        }
+        .process-grid {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .step {
+          padding: 18px 5px;
+        }
+        .why-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .why-image {
+          height: 300px;
+        }
+        .quote-card {
+          padding: 26px 20px;
+        }
+        .contact-form {
+          padding: 22px;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .cta-inner {
+          padding: 30px 25px;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .cta-band {
+          padding-bottom: 60px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 25px;
+        }
+        .footer-grid > div:first-child {
+          grid-column: 1/-1;
+        }
+        .copyright {
+          justify-content: center;
+          text-align: center;
+        }
+        .whatsapp {
+          width: 52px;
+          height: 52px;
+          right: 15px;
+          bottom: 15px;
+        }
+      }
+      @media (max-width: 390px) {
+        .hero-actions .btn {
+          width: 100%;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid > div:first-child {
+          grid-column: auto;
+        }
+        .trust-row {
+          align-items: flex-start;
+        }
+        .floating-card {
+          padding: 12px;
+        }
+        .fc-one {
+          left: -10px;
+        }
+        .fc-two {
+          right: -5px;
+        }
+      }
+
+      /* Added visa, destination and gallery sections */
+      .visa-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .visa-card {
+        padding: 25px 22px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          border-color 0.25s;
+      }
+      .visa-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow);
+        border-color: #b8dcd5;
+      }
+      .visa-card .service-icon {
+        background: linear-gradient(135deg, #e4f6f2, #fff0eb);
+      }
+      .visa-card p {
+        font-size: 0.91rem;
+        min-height: 70px;
+      }
+      .gallery-section {
+        background: var(--paper);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        grid-auto-rows: 210px;
+        gap: 15px;
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #dceae7;
+      }
+      .gallery-item:first-child {
+        grid-row: span 2;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.07);
+      }
+      .gallery-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 35px 18px 16px;
+        color: white;
+        font-weight: 800;
+        background: linear-gradient(transparent, rgba(10, 35, 35, 0.78));
+      }
+      .country-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .country-image {
+        height: 180px;
+      }
+      @media (max-width: 950px) {
+        .visa-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .country-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-auto-rows: 190px;
+        }
+        .gallery-item:first-child {
+          grid-row: span 2;
+        }
+      }
+      @media (max-width: 720px) {
+        .visa-grid {
+          grid-template-columns: 1fr;
+        }
+        .country-grid {
+          grid-template-columns: 1fr;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-auto-rows: 145px;
+          gap: 10px;
+        }
+        .gallery-item:first-child {
+          grid-row: span 2;
+        }
+        .gallery-caption {
+          font-size: 0.85rem;
+          padding: 28px 12px 12px;
+        }
+      }
+
+      .testimonial-slider {
+        position: relative;
+        overflow: hidden;
+        max-width: 1000px;
+        margin: auto;
+      }
+      .testimonial-track {
+        display: flex;
+        gap: 18px;
+        transition: transform 0.45s ease;
+        will-change: transform;
+      }
+      .testimonial-slide {
+        flex: 0 0 calc(33.333% - 12px);
+        min-width: 0;
+      }
+      .testimonial-slide .quote-card {
+        height: 100%;
+        padding: 25px 22px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .student-photo {
+        width: 128px;
+        height: 128px;
+        object-fit: cover;
+        border-radius: 24px;
+        margin: 0 auto 18px;
+        border: 4px solid #fff0e8;
+        box-shadow: 0 12px 30px #ff633b22;
+        display: block;
+      }
+      .testimonial-slide .quote-card h3 {
+        text-align: center;
+      }
+      .testimonial-slide .quote-card > p {
+        text-align: center;
+        font-size: 0.86rem;
+        color: #e84d28;
+      }
+      .testimonial-slide blockquote {
+        font:
+          500 0.93rem "DM Sans",
+          sans-serif;
+        line-height: 1.55;
+        color: #667b7b;
+        margin: 8px auto 0;
+        text-align: center;
+      }
+      .testimonial-meta {
+        margin-top: auto;
+        padding-top: 18px;
+        width: 100%;
+      }
+      .testimonial-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 24px 0 0;
+      }
+      .slider-arrow {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--navy);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      .slider-dots {
+        display: flex;
+        gap: 7px;
+        align-items: center;
+      }
+      .slider-dots button {
+        width: 8px;
+        height: 8px;
+        border: 0;
+        border-radius: 99px;
+        background: #c8d8d5;
+        padding: 0;
+        cursor: pointer;
+      }
+      .slider-dots button.active {
+        width: 22px;
+        background: var(--blue);
+      }
+      .view-all-wrap {
+        text-align: center;
+        margin-top: 25px;
+      }
+      .detail-hero {
+        padding: 65px 0;
+        background: linear-gradient(125deg, #fff8f4, #ffe5d8);
+      }
+      .detail-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        align-items: center;
+      }
+      .detail-hero-image {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+        border-radius: 26px;
+        box-shadow: var(--shadow);
+      }
+      .detail-copy {
+        font-size: 1.02rem;
+      }
+      .detail-points {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 28px;
+      }
+      .detail-point {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 20px;
+        background: #fff;
+      }
+      .detail-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+      .detail-gallery img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+      .detail-section {
+        padding: 65px 0;
+      }
+      @media (max-width: 950px) {
+        .testimonial-slide {
+          flex-basis: calc(50% - 9px);
+        }
+        .detail-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 720px) {
+        .testimonial-slide {
+          flex-basis: 100%;
+        }
+        .detail-layout {
+          grid-template-columns: 1fr;
+        }
+        .detail-hero-image {
+          height: 280px;
+        }
+        .detail-points {
+          grid-template-columns: 1fr;
+        }
+        .detail-gallery {
+          grid-template-columns: 1fr 1fr;
+        }
+        .detail-gallery img {
+          height: 160px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="enhance.css" />
+    <style>
+      .g-hero {
+        background: linear-gradient(125deg, #fff8f4, #ffe5d8 60%, #ffd9c6);
+      }
+      .g-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .g-chip {
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 11px 20px;
+        font:
+          700 0.92rem "DM Sans",
+          sans-serif;
+        color: var(--navy);
+        cursor: pointer;
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          background 0.25s,
+          color 0.25s;
+      }
+      .g-chip em {
+        font-style: normal;
+        opacity: 0.65;
+        margin-left: 4px;
+        font-size: 0.82rem;
+      }
+      .g-chip:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 22px #ff633b22;
+      }
+      .g-chip.active {
+        background: linear-gradient(135deg, #ff633b, #ff874f);
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 10px 24px #ff633b44;
+      }
+      .g-count {
+        text-align: center;
+        font-size: 0.9rem;
+        margin: 6px 0 24px;
+      }
+      .g-grid {
+        columns: 3 260px;
+        column-gap: 16px;
+      }
+      .g-tile {
+        position: relative;
+        margin: 0 0 16px;
+        break-inside: avoid;
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: zoom-in;
+        background: #dceae7;
+        animation: tilePop 0.7s both;
+        animation-delay: var(--d, 0s);
+        box-shadow: 0 8px 22px #153f4012;
+        transition:
+          box-shadow 0.4s,
+          transform 0.4s;
+      }
+      .g-tile[hidden],
+      .g-tile.out {
+        display: none;
+      }
+      .g-tile:nth-child(3n + 1) img {
+        aspect-ratio: 4/5;
+      }
+      .g-tile:nth-child(3n + 2) img {
+        aspect-ratio: 1/1;
+      }
+      .g-tile:nth-child(3n) img {
+        aspect-ratio: 4/3;
+      }
+      .g-tile img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition:
+          transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 0.5s;
+      }
+      .g-tile:hover {
+        box-shadow: 0 24px 54px #ff633b30;
+        transform: translateY(-6px);
+      }
+      .g-tile:hover img {
+        transform: scale(1.1) rotate(0.6deg);
+        filter: saturate(1.15);
+      }
+      .g-tile figcaption {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 46px 18px 16px;
+        color: #fff;
+        background: linear-gradient(transparent, rgba(10, 35, 35, 0.85));
+        transform: translateY(12px);
+        opacity: 0;
+        transition:
+          transform 0.45s,
+          opacity 0.45s;
+      }
+      .g-tile:hover figcaption,
+      .g-tile:focus-visible figcaption {
+        transform: none;
+        opacity: 1;
+      }
+      .g-tile figcaption small {
+        display: block;
+        color: #ffb39f;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.68rem;
+      }
+      .g-tile figcaption strong {
+        font:
+          800 1.02rem Manrope,
+          sans-serif;
+      }
+      .g-zoom {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #fffffff0;
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        font-weight: 800;
+        opacity: 0;
+        transform: scale(0.6) rotate(-30deg);
+        transition: all 0.4s;
+      }
+      .g-tile:hover .g-zoom {
+        opacity: 1;
+        transform: none;
+      }
+      .g-note {
+        text-align: center;
+        font-size: 0.82rem;
+        margin-top: 26px;
+      }
+      .g-note code {
+        background: #fff0e8;
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+      @media (hover: none) {
+        .g-tile figcaption {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .lb {
+        position: fixed;
+        inset: 0;
+        z-index: 300;
+        background: rgba(8, 28, 28, 0.94);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .lb[hidden] {
+        display: none;
+      }
+      .lb figure {
+        margin: 0;
+        text-align: center;
+        max-width: min(1100px, 92vw);
+      }
+      .lb img {
+        max-width: 100%;
+        max-height: 78vh;
+        border-radius: 18px;
+        box-shadow: 0 30px 90px #000a;
+        animation: tilePop 0.45s both;
+      }
+      .lb figcaption {
+        color: #fff;
+        font:
+          700 1rem Manrope,
+          sans-serif;
+        margin-top: 14px;
+      }
+      .lb-x,
+      .lb-nav {
+        position: absolute;
+        border: 0;
+        background: #ffffff1f;
+        color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        transition:
+          background 0.25s,
+          transform 0.25s;
+      }
+      .lb-x:hover,
+      .lb-nav:hover {
+        background: #ff633b;
+      }
+      .lb-x {
+        top: 18px;
+        right: 18px;
+        width: 46px;
+        height: 46px;
+        font-size: 1.1rem;
+      }
+      .lb-nav {
+        top: 50%;
+        width: 54px;
+        height: 54px;
+        font-size: 2rem;
+        margin-top: -27px;
+        line-height: 1;
+      }
+      .lb-nav.prev {
+        left: 18px;
+      }
+      .lb-nav.next {
+        right: 18px;
+      }
+      @media (max-width: 720px) {
+        .g-grid {
+          columns: 2 150px;
+          column-gap: 10px;
+        }
+        .g-tile {
+          margin-bottom: 10px;
+          border-radius: 14px;
+        }
+        .lb-nav {
+          width: 42px;
+          height: 42px;
+          font-size: 1.5rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .g-tile {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <span>✦ Personalised guidance for your global future</span
+        ><span
+          >Call us: <a href="tel:+911543595866">+91 154 359 5866</a> &nbsp; ·
+          &nbsp; <a href="mailto:info@immigraceoverseas.com">Email us</a></span
+        >
+      </div>
+    </div>
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a class="brand" href="index.html#home"
+          ><img
+            class="brand-logo"
+            src="https://immigraceoverseas.com/wp-content/uploads/2023/10/logo.png"
+            alt="Immigrace Overseas logo"
+          /><span
+            >Immigrace Overseas<small
+              >Global pathways. Personal guidance.</small
+            ></span
+          ></a
+        >
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+          <a href="index.html#home">Home</a
+          ><a href="index.html#destinations">Countries</a
+          ><a href="index.html#visas">Visas</a
+          ><a href="index.html#gallery">Gallery</a
+          ><a href="index.html#about">About us</a
+          ><a href="index.html#contact">Contact</a>
+        </nav>
+        <a class="btn nav-cta" href="index.html#contact">Free consultation ↗</a>
+      </div>
+    </header>
+    <main>
+      <section class="detail-hero g-hero">
+        <div class="container">
+          <span class="section-tag">Student success moments</span>
+          <h1 style="font-size: clamp(2.3rem, 5vw, 4rem)">Our memories</h1>
+          <p class="detail-copy">
+            Guidance sessions, dream destinations and campus moments — a look at
+            the journeys we help students begin.
+          </p>
+          <a class="btn" href="index.html#contact">Start your journey →</a>
+        </div>
+      </section>
+      <section class="detail-section">
+        <div class="container">
+          <div class="g-chips" id="gChips">
+            <button class="g-chip active" data-filter="all">
+              All memories <em></em></button
+            ><button class="g-chip" data-filter="guidance">
+              Guidance <em></em></button
+            ><button class="g-chip" data-filter="destinations">
+              Destinations <em></em></button
+            ><button class="g-chip" data-filter="campus">
+              Campus life <em></em></button
+            ><button class="g-chip" data-filter="travel">
+              Travel <em></em>
+            </button>
+          </div>
+          <p class="g-count" id="gCount" aria-live="polite"></p>
+          <div class="g-grid" id="gGrid">
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="campus"
+              data-cap="Graduation day"
+            >
+              <img
+                loading="lazy"
+                src="assets/images/campus/graduation.svg"
+                alt="Graduation day"
+              />
+              <figcaption>
+                <small>Campus life</small><strong>Graduation day</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="guidance"
+              data-cap="Application guidance"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80"
+                alt="Application guidance"
+              />
+              <figcaption>
+                <small>Guidance</small><strong>Application guidance</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="Sydney, Australia"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&w=800&q=80"
+                alt="Sydney, Australia"
+              />
+              <figcaption>
+                <small>Destinations</small><strong>Sydney, Australia</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="campus"
+              data-cap="Campus life"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"
+                alt="Campus life"
+              />
+              <figcaption>
+                <small>Campus life</small><strong>Campus life</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="guidance"
+              data-cap="Student consultation"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+                alt="Student consultation"
+              />
+              <figcaption>
+                <small>Guidance</small><strong>Student consultation</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="Toronto, Canada"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=800&q=80"
+                alt="Toronto, Canada"
+              />
+              <figcaption>
+                <small>Destinations</small><strong>Toronto, Canada</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="travel"
+              data-cap="Your next chapter"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80"
+                alt="Your next chapter"
+              />
+              <figcaption>
+                <small>Travel</small><strong>Your next chapter</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="campus"
+              data-cap="Study groups"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                alt="Study groups"
+              />
+              <figcaption>
+                <small>Campus life</small><strong>Study groups</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="London, United Kingdom"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80"
+                alt="London, United Kingdom"
+              />
+              <figcaption>
+                <small>Destinations</small
+                ><strong>London, United Kingdom</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="guidance"
+              data-cap="Personal guidance"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+                alt="Personal guidance"
+              />
+              <figcaption>
+                <small>Guidance</small><strong>Personal guidance</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="travel"
+              data-cap="Ready for take-off"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80"
+                alt="Ready for take-off"
+              />
+              <figcaption>
+                <small>Travel</small><strong>Ready for take-off</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="New York, United States"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=800&q=80"
+                alt="New York, United States"
+              />
+              <figcaption>
+                <small>Destinations</small
+                ><strong>New York, United States</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="campus"
+              data-cap="New friendships"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80"
+                alt="New friendships"
+              />
+              <figcaption>
+                <small>Campus life</small><strong>New friendships</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="guidance"
+              data-cap="One-to-one support"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+                alt="One-to-one support"
+              />
+              <figcaption>
+                <small>Guidance</small><strong>One-to-one support</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="Dublin, Ireland"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80"
+                alt="Dublin, Ireland"
+              />
+              <figcaption>
+                <small>Destinations</small><strong>Dublin, Ireland</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="campus"
+              data-cap="Student community"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
+                alt="Student community"
+              />
+              <figcaption>
+                <small>Campus life</small><strong>Student community</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="New Zealand"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=800&q=80"
+                alt="New Zealand"
+              />
+              <figcaption>
+                <small>Destinations</small><strong>New Zealand</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="travel"
+              data-cap="Adventure awaits"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80"
+                alt="Adventure awaits"
+              />
+              <figcaption>
+                <small>Travel</small><strong>Adventure awaits</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="destinations"
+              data-cap="Sydney harbour"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80"
+                alt="Sydney harbour"
+              />
+              <figcaption>
+                <small>Destinations</small><strong>Sydney harbour</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="campus"
+              data-cap="Celebrate your milestones"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80"
+                alt="Celebrate your milestones"
+              />
+              <figcaption>
+                <small>Campus life</small
+                ><strong>Celebrate your milestones</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="travel"
+              data-cap="Travel with confidence"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=800&q=80"
+                alt="Travel with confidence"
+              />
+              <figcaption>
+                <small>Travel</small><strong>Travel with confidence</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="travel"
+              data-cap="New horizons"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80"
+                alt="New horizons"
+              />
+              <figcaption>
+                <small>Travel</small><strong>New horizons</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+            <figure
+              class="g-tile"
+              data-tile
+              data-cat="travel"
+              data-cap="Explore the world"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"
+                alt="Explore the world"
+              />
+              <figcaption>
+                <small>Travel</small><strong>Explore the world</strong>
+              </figcaption>
+              <span class="g-zoom">⤢</span>
+            </figure>
+          </div>
+          <p class="g-note">
+            Photos shown are illustrative. Replace them with your own event and
+            student photos in <code>gallery.html</code>.
+          </p>
+        </div>
+      </section>
+    </main>
+    <div
+      class="lb"
+      id="lb"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Photo viewer"
+    >
+      <button class="lb-x" id="lbX" aria-label="Close">✕</button
+      ><button class="lb-nav prev" id="lbPrev" aria-label="Previous photo">
+        ‹
+      </button>
+      <figure>
+        <img id="lbImg" alt="" />
+        <figcaption id="lbCap"></figcaption>
+      </figure>
+      <button class="lb-nav next" id="lbNext" aria-label="Next photo">›</button>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="brand footer-brand" href="index.html#home"
+              ><img
+                class="brand-logo"
+                src="https://immigraceoverseas.com/wp-content/uploads/2023/10/logo.png"
+                alt="Immigrace Overseas logo"
+              /><span
+                >Immigrace Overseas<small
+                  >Global pathways. Personal guidance.</small
+                ></span
+              ></a
+            >
+            <p>
+              A modern immigration website concept designed to help people
+              explore their options and take the next step with confidence.
+            </p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <a href="index.html#destinations">Destinations</a
+            ><a href="index.html#visas">Visa pathways</a
+            ><a href="index.html#process">How it works</a
+            ><a href="index.html#about">About us</a>
+          </div>
+          <div>
+            <h4>Popular services</h4>
+            <a href="visa.html?visa=Study%20Visa">Study visas</a
+            ><a href="visa.html?visa=Dependent%20Visa">Dependent visas</a
+            ><a href="visa.html?visa=Spouse%20Visa">Spouse visas</a
+            ><a href="visa.html?visa=Tourist%20Visa">Tourist visas</a>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <a href="tel:+911543595866">+91 154 359 5866</a
+            ><a href="mailto:info@immigraceoverseas.com">Send us an email</a
+            ><a
+              class="ig"
+              data-site-href="instagram"
+              href="https://www.instagram.com/immigraceoverseas/"
+              target="_blank"
+              rel="noopener"
+              >📸 <span data-site="instagram">@immigraceoverseas</span></a
+            ><a href="index.html#contact">Request consultation</a>
+            <p style="font-size: 0.78rem">
+              Visa decisions are made by the relevant government authorities. No
+              outcome is guaranteed.
+            </p>
+          </div>
+        </div>
+        <div class="footer-map reveal">
+          <div class="footer-map-info">
+            <span class="pin">📍</span>
+            <h4>Visit our office</h4>
+            <p data-site="address">
+              Immigrace Overseas Office, Your Street, City, State – PIN
+            </p>
+            <p>🕘 Monday – Saturday · 10:00 AM – 6:00 PM</p>
+            <a
+              class="btn"
+              data-site-href="directions"
+              href="https://www.google.com/maps/search/?api=1&query=Immigrace%20Overseas"
+              target="_blank"
+              rel="noopener"
+              >Get directions ↗</a
+            ><a
+              class="btn ghost-light"
+              data-site-href="instagram"
+              href="https://www.instagram.com/immigraceoverseas/"
+              target="_blank"
+              rel="noopener"
+              >📸 Follow us</a
+            >
+          </div>
+          <div class="map-frame">
+            <iframe
+              data-site-map
+              src="https://www.google.com/maps?q=Immigrace%20Overseas&output=embed"
+              title="Immigrace Overseas office location map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="copyright">
+          <span
+            >© <span id="year"></span> Immigrace Overseas · Demo concept</span
+          ><span>Privacy · Terms · Accessibility</span>
+        </div>
+      </div>
+    </footer>
+    <a
+      class="whatsapp"
+      id="whatsappLink"
+      href="https://wa.me/919876543210?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20immigration%20options."
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp"
+      >☏</a
+    >
+    <script>
+      const menuBtn = document.getElementById("menuBtn"),
+        navLinks = document.getElementById("navLinks");
+      if (menuBtn && navLinks) {
+        menuBtn.addEventListener("click", () => {
+          const open = navLinks.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", String(open));
+          menuBtn.textContent = open ? "✕" : "☰";
+        });
+        navLinks.querySelectorAll("a").forEach((a) =>
+          a.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+            menuBtn.setAttribute("aria-expanded", "false");
+            menuBtn.textContent = "☰";
+          }),
+        );
+      }
+      document.querySelectorAll(".reveal").forEach((el) => {
+        if ("IntersectionObserver" in window) {
+          const ob = new IntersectionObserver(
+            (es) =>
+              es.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add("visible");
+                  ob.unobserve(e.target);
+                }
+              }),
+            { threshold: 0.12 },
+          );
+          ob.observe(el);
+        } else el.classList.add("visible");
+      });
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="enhance.js"></script>
+    <script>
+      (() => {
+        const grid = document.getElementById("gGrid"),
+          chips = [...document.querySelectorAll(".g-chip")],
+          count = document.getElementById("gCount");
+        const lb = document.getElementById("lb"),
+          lbImg = document.getElementById("lbImg"),
+          lbCap = document.getElementById("lbCap");
+        let filter = "all",
+          list = [],
+          idx = 0;
+        const tiles = () => [...grid.querySelectorAll(".g-tile")];
+        const shown = () =>
+          tiles().filter((t) => !t.hidden && !t.classList.contains("out"));
+        function refresh(animate) {
+          const ok = tiles().filter((t) => !t.hidden);
+          ok.forEach((t) =>
+            t.classList.toggle(
+              "out",
+              filter !== "all" && t.dataset.cat !== filter,
+            ),
+          );
+          chips.forEach((c) => {
+            const f = c.dataset.filter,
+              n = ok.filter((t) => f === "all" || t.dataset.cat === f).length;
+            c.querySelector("em").textContent = "(" + n + ")";
+            c.hidden = n === 0;
+          });
+          const v = shown();
+          count.textContent = "Showing " + v.length + " memories";
+          if (animate)
+            v.forEach((t, i) => {
+              t.style.animation = "none";
+              t.offsetHeight;
+              t.style.setProperty("--d", i * 0.05 + "s");
+              t.style.animation = "";
+            });
+        }
+        chips.forEach((c) =>
+          c.addEventListener("click", () => {
+            filter = c.dataset.filter;
+            chips.forEach((x) => x.classList.toggle("active", x === c));
+            refresh(true);
+          }),
+        );
+        document.addEventListener("tile-broken", () => refresh(false));
+        refresh(true);
+        function open(i) {
+          list = shown();
+          idx = (i + list.length) % list.length;
+          const t = list[idx],
+            im = t.querySelector("img");
+          lbImg.src = im.src.replace(/w=\d+/, "w=1600");
+          lbImg.alt = im.alt;
+          lbCap.textContent =
+            t.dataset.cap + "  ·  " + (idx + 1) + " / " + list.length;
+          lb.hidden = false;
+          document.body.style.overflow = "hidden";
+        }
+        function close() {
+          lb.hidden = true;
+          lbImg.src = "";
+          document.body.style.overflow = "";
+        }
+        grid.addEventListener("click", (e) => {
+          const t = e.target.closest(".g-tile");
+          if (t) {
+            list = shown();
+            open(list.indexOf(t));
+          }
+        });
+        document.getElementById("lbX").onclick = close;
+        document.getElementById("lbPrev").onclick = () => open(idx - 1);
+        document.getElementById("lbNext").onclick = () => open(idx + 1);
+        lb.addEventListener("click", (e) => {
+          if (e.target === lb) close();
+        });
+        addEventListener("keydown", (e) => {
+          if (lb.hidden) return;
+          if (e.key === "Escape") close();
+          if (e.key === "ArrowLeft") open(idx - 1);
+          if (e.key === "ArrowRight") open(idx + 1);
+        });
+        let x0 = null;
+        lb.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), {
+          passive: true,
+        });
+        lb.addEventListener("touchend", (e) => {
+          if (x0 === null) return;
+          const dx = e.changedTouches[0].clientX - x0;
+          if (Math.abs(dx) > 50) open(idx + (dx < 0 ? 1 : -1));
+          x0 = null;
+        });
+      })();
+    </script>
+  </body>
+</html>
