@@ -11,7 +11,7 @@ window.SITE = {
   const $ = (s, r = document) => r.querySelector(s),
     $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-  // progress bar, sticky nav, back-to-top
+  // progress bar, fixed nav, back-to-top
   const bar = document.createElement("div");
   bar.className = "scroll-progress";
   document.body.prepend(bar);
@@ -22,12 +22,30 @@ window.SITE = {
   top.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
   document.body.append(top);
   const nav = $(".navbar");
+  const topbar = $(".topbar");
+  const footer = $("footer");
+  if (nav && footer) {
+    const footerObserver = new IntersectionObserver(([entry]) => {
+      nav.classList.toggle("footer-visible", entry.isIntersecting);
+    });
+    footerObserver.observe(footer);
+  }
+  const updateNavTop = () => {
+    if (nav && topbar)
+      nav.style.setProperty(
+        "--topbar-height",
+        Math.max(topbar.offsetHeight - scrollY, 0) + "px",
+      );
+  };
+  updateNavTop();
+  addEventListener("resize", updateNavTop);
   addEventListener(
     "scroll",
     () => {
       const h = document.documentElement,
         y = scrollY;
       bar.style.width = (y / (h.scrollHeight - innerHeight)) * 100 + "%";
+      updateNavTop();
       nav && nav.classList.toggle("scrolled", y > 40);
       top.classList.toggle("show", y > 600);
       const p = $(".parallax");
