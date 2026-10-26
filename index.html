@@ -1526,7 +1526,7 @@
         <a class="brand" href="#home"
           ><img
             class="brand-logo"
-            src="https://immigraceoverseas.com/wp-content/uploads/2023/10/logo.png"
+            src="assets/images/logo/image.png"
             alt="Immigrace Overseas logo"
           /><span
             >Immigrace Overseas<small
@@ -2384,6 +2384,10 @@
               </p>
             </div>
             <form class="contact-form reveal" id="contactForm">
+              <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden">
+                <label for="website">Leave this field empty</label>
+                <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
               <h3>Request a consultation</h3>
               <p style="font-size: 0.9rem">Fields marked * are required.</p>
               <div class="form-grid">
@@ -2461,9 +2465,8 @@
                 Send enquiry ↗
               </button>
               <p class="form-note">
-                Demo note: this standalone HTML opens your email app with the
-                enquiry filled in. To save enquiries automatically, connect a
-                backend or form service.
+                Your details will be sent securely to our team for follow-up.
+                Please don’t include passport numbers or sensitive documents.
               </p>
               <div
                 class="form-status"
@@ -2494,7 +2497,7 @@
             <a class="brand footer-brand" href="#home"
               ><img
                 class="brand-logo"
-                src="https://immigraceoverseas.com/wp-content/uploads/2023/10/logo.png"
+                src="assets/images/logo/image.png"
                 alt="Immigrace Overseas logo"
               /><span
                 >Immigrace Overseas<small
@@ -2628,36 +2631,66 @@
           document.getElementById("service").value = a.dataset.service;
         }),
       );
-      document.getElementById("contactForm").addEventListener("submit", (e) => {
+      document.getElementById("contactForm").addEventListener("submit", async (e) => {
         e.preventDefault();
+
         const form = e.currentTarget;
         if (!form.reportValidity()) return;
-        const d = new FormData(form);
-        const subject = encodeURIComponent(
-          "Immigration consultation enquiry — " + d.get("name"),
-        );
-        const body = encodeURIComponent(
-          "New immigration enquiry\n\nName: " +
-            d.get("name") +
-            "\nEmail: " +
-            d.get("email") +
-            "\nPhone: " +
-            d.get("phone") +
-            "\nDestination: " +
-            d.get("country") +
-            "\nService: " +
-            d.get("service") +
-            "\nMessage: " +
-            (d.get("message") || "Not provided"),
-        );
-        document.getElementById("formStatus").textContent =
-          "Your email app should open with the enquiry details. Please press Send there to submit it. For automatic website submissions, connect a backend or form service.";
-        document.getElementById("formStatus").classList.add("show");
-        window.location.href =
-          "mailto:info@immigraceoverseas.com?subject=" +
-          subject +
-          "&body=" +
-          body;
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        const status = document.getElementById("formStatus");
+        const data = new FormData(form);
+
+        const payload = {
+          name: String(data.get("name") || "").trim(),
+          email: String(data.get("email") || "").trim(),
+          phone: String(data.get("phone") || "").trim(),
+          message:
+            "Destination: " + String(data.get("country") || "Not provided") +
+            "\nService: " + String(data.get("service") || "Not provided") +
+            "\nMessage: " + String(data.get("message") || "Not provided"),
+          website: String(data.get("website") || "").trim()
+        };
+
+        status.textContent = "Sending your enquiry…";
+        status.style.display = "block";
+        status.classList.add("show");
+        status.style.background = "#eef4ff";
+        status.style.color = "#18383a";
+        submitButton.disabled = true;
+        submitButton.style.opacity = "0.7";
+
+        try {
+          const response = await fetch(
+            "https://immigrace-email.manjotkaur311205.workers.dev/",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            }
+          );
+
+          const result = await response.json().catch(() => ({}));
+
+          if (!response.ok || !result.success) {
+            throw new Error(result.error || "Your enquiry could not be sent.");
+          }
+
+          status.textContent =
+            "Thank you! Your enquiry has been sent successfully. Our team will contact you soon.";
+          status.style.background = "#e7f8ef";
+          status.style.color = "#116b3c";
+          form.reset();
+        } catch (error) {
+          console.error("Contact form submission failed:", error);
+          status.textContent =
+            "Sorry, your enquiry could not be sent right now. Please try again or email info@immigraceoverseas.com.";
+          status.style.background = "#fff0ee";
+          status.style.color = "#a12818";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.style.opacity = "1";
+        }
       });
 
       const testimonialTrack = document.getElementById("testimonialTrack");
