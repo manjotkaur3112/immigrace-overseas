@@ -1,10 +1,10 @@
 /* ============ EDIT YOUR DETAILS HERE (used on every page) ============ */
 window.SITE = {
-  instagramHandle: "@immigraceoverseas",
-  instagramUrl: "https://www.instagram.com/immigraceoverseas/",
-  address: "Immigrace Overseas Office, Your Street, City, State – PIN",
+  instagramHandle: "@immigroup_sriganganagar",
+  instagramUrl: "https://www.instagram.com/immigroup_sriganganagar/",
+  address: "47 H Block, 2nd Floor, Godara College Road, Sri Ganganagar 335001",
   mapQuery:
-    "Immigrace Overseas" /* a business name, full address, or "lat,lng" */,
+    "Immigroup Overseas Consultant, 47 H Block, Godara College Road, Sri Ganganagar, Rajasthan 335001" /* a business name, full address, or "lat,lng" */,
 };
 /* ====================================================================== */
 (() => {
